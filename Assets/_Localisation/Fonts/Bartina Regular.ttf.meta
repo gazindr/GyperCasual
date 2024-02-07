@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 9cefc1b9e334922429dcaaa0bf3d719c
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Bartina
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 04823ef32420ed343a6d8a0bd3a2e16d, type: 3}
+  - {fileID: 12800000, guid: f4bc9be96ad3264498132f05753d41cb, type: 3}
+  - {fileID: 12800000, guid: 32edc973fd6ecad448a9135ed8588e02, type: 3}
+  - {fileID: 12800000, guid: f1f4061ed82b75d4abec007a05bfc40b, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

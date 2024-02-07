@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f1bb3c627d4cc8a844750790899e27, type: 3}
+  m_Name: Package Info
+  m_EditorClassIdentifier: 
+  PackageImage: {fileID: 2800000, guid: fa21c253cdf74f5e8b05c223edbe5b99, type: 3}
+  PackageTitle: Bubble Pop
+  PackageID: 175008
+  Documentation: {fileID: 102900000, guid: 54526d60665d4f6c8f289920170d95fd, type: 3}
+  ShowAtStartup: 1
