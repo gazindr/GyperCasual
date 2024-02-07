@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Ilumisoft/Bubble Pop/Scenes/Menu.unity
-    guid: 6c7f5b9abfa1418f80526e409467594d
+    path: Assets/Scenes/Menu.unity
+    guid: 25d48bfd7f2908c4fbd05cf4672e4d47
   - enabled: 1
-    path: Assets/Ilumisoft/Bubble Pop/Scenes/Game.unity
-    guid: 5d8821b71a6c41bd80adb8b3b1ce4d13
+    path: Assets/Scenes/Help.unity
+    guid: 407b718ca09cdb94ea5d041c552d37fa
   - enabled: 1
-    path: Assets/Ilumisoft/Bubble Pop/Scenes/Help.unity
-    guid: f6cc58e671ee42eabffc2b5d06fce5ab
+    path: Assets/Scenes/Game.unity
+    guid: e0daf18257620e74e81e26240ac4246e
   m_configObjects: {}
