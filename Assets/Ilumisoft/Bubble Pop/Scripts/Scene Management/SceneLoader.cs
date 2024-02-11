@@ -18,7 +18,8 @@
         {
             
             StopAllCoroutines();
-            if (Time.unscaledTime - AdsManager.Instance.lastPingTime > 90)
+            StartCoroutine(LoadSceneCoroutine(name));
+            /* if (Time.unscaledTime - AdsManager.Instance.lastPingTime > 90)
             {
                 AdsManager.Instance.PingPopAd();
                 //SceneManager.LoadScene(name);
@@ -27,9 +28,9 @@
             {
                 StartCoroutine(LoadSceneCoroutine(name));
 
-            }           
-            
-            
+            }           */
+
+
         }
         IEnumerator WaitForRestart(string name)
         {

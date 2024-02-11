@@ -26,9 +26,9 @@
             var color = text.color;
             color.a = 1;
 
-            text.CrossFadeColor(color, 0.1f, true, true);
+            text.CrossFadeColor(color, 0.2f, true, true);
 
-            StartCoroutine(ShowCoroutine(value, 0.5f));
+            StartCoroutine(ShowCoroutine(value, 1f));
         }
 
         public void Hide()
@@ -36,7 +36,7 @@
             var color = text.color;
             color.a = 0;
 
-            text.CrossFadeColor(color, 0.5f, true, true);
+            text.CrossFadeColor(color, 1f, true, true);
 
         }
 

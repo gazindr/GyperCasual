@@ -1,7 +1,7 @@
 ﻿namespace Ilumisoft.BubblePop
 {
-    using InstantGamesBridge.Modules.Leaderboard;
-    using InstantGamesBridge;
+    //using InstantGamesBridge.Modules.Leaderboard;
+    //using InstantGamesBridge;
     using UnityEngine;
     
     public static class Highscore
@@ -19,10 +19,10 @@
             PlayerPrefs.SetInt(key, value);
 
             var leaderboardName = "HighScore";
-            var options = new SetScoreYandexOptions(value, leaderboardName);
+            //var options = new SetScoreYandexOptions(value, leaderboardName);
 
             // Вариант №1 - просто записать очки игрока
-            Bridge.leaderboard.SetScore(options);
+            //Bridge.leaderboard.SetScore(options);
             PlayerPrefs.Save();
         }
 
