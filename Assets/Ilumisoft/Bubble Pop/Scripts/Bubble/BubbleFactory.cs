@@ -20,6 +20,13 @@
 
             return Spawn(prefab, position);
         }
+        public Bubble Spawn(Vector3 position, Bubble bubble)
+        {
+            var prefab = bubble;
+
+            return Spawn(prefab, position);
+        }
+       
 
         Bubble Spawn(Bubble prefab, Vector3 position)
         {

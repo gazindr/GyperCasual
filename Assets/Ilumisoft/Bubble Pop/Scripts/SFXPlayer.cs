@@ -34,27 +34,32 @@
         }
         private void CheckVolume()
         {
-            musicSource.volume = PlayerPrefs.GetFloat("MusicVolume");
-            audioSource.volume = PlayerPrefs.GetFloat("SoundsVolume");
-            if (PlayerPrefs.GetFloat("SoundsVolume") == 0)
+            if (musicSource != null)
             {
-                soundsImage.sprite = soundsOff;
-                soundsToggle.isOn = true;
-            } else
-            {
-                soundsImage.sprite = soundsOn;
-                soundsToggle.isOn = false;
+                musicSource.volume = PlayerPrefs.GetFloat("MusicVolume");
+                audioSource.volume = PlayerPrefs.GetFloat("SoundsVolume");
+                if (PlayerPrefs.GetFloat("SoundsVolume") == 0)
+                {
+                    soundsImage.sprite = soundsOff;
+                    soundsToggle.isOn = true;
+                }
+                else
+                {
+                    soundsImage.sprite = soundsOn;
+                    soundsToggle.isOn = false;
+                }
+                if (PlayerPrefs.GetFloat("MusicVolume") == 0)
+                {
+                    musicImage.sprite = musicOff;
+                    musicToggle.isOn = true;
+                }
+                else
+                {
+                    musicImage.sprite = musicOn;
+                    musicToggle.isOn = false;
+                }
             }
-            if (PlayerPrefs.GetFloat("MusicVolume") == 0)
-            {
-                musicImage.sprite = musicOff;
-                musicToggle.isOn = true;
-            }
-            else
-            {
-                musicImage.sprite = musicOn;
-                musicToggle.isOn = false;   
-            }
+            
         }
         public void ChangePitch(int i)
         {

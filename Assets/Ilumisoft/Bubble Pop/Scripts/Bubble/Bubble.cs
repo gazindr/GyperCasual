@@ -12,6 +12,10 @@
         [SerializeField] 
         Animator animator = null;
 
+        public int id;
+        public int posX;
+        public int posY;
+
         [SerializeField] 
         Collider2D inputCollider = null;
 
@@ -100,7 +104,7 @@
 
             // Trigger OnDestroy event
             OnDestroy?.Invoke(this);
-
+            //MovesManager.Instance.NextMove();
             // Destroy the game object after a second
             Destroy(this.gameObject, 1.0f);
         }

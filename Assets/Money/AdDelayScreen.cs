@@ -36,7 +36,7 @@ public class AdDelayScreen : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.7f);
         _canvas.enabled = false;
         IsInCountDown = false;
-        AdsManager.Instance.ShowAd(AdsManager.AdType.Interstitial);
+        AdsManager.Instance.ShowInterstitial();
         countDown = null;
 
     }

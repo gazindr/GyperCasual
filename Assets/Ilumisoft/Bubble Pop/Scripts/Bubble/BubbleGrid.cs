@@ -8,7 +8,7 @@
         /// Reference to the bubble manager
         /// </summary>
         BubbleManager bubbleManager;
-
+        Bubble bubble;
         /// <summary>
         /// Reference to the bubble factory
         /// </summary>
@@ -24,8 +24,21 @@
         /// <summary>
         /// Destroys all bubbles
         /// </summary>
+        /// 
+        public void Deactivate()
+        {
+            
+            foreach (var bubble in bubbleManager.Bubbles)
+            {
+                if (bubble != null)
+                {
+                    bubble.gameObject.SetActive(false);
+                }
+            }
+        }
         public void Clear()
         {
+            Debug.Log("Clearing");
             foreach(var bubble in bubbleManager.Bubbles)
             {
                 if (bubble != null)
@@ -48,7 +61,58 @@
                 }
             }
         }
+        
+        
+        public int[,] SaveGrid()
+        {
+            Debug.Log("Saving! Bubble: ");
+            int[,] _bub = new int[Width, Height];
+            int counter = 0;
+            for (int y = 0; y < Height; y++)
+            {
+                for (int x = 0; x < Width; x++)
+                {
+                    //Debug.Log("Spawning");
+                    if (TryGetBubble(x,y,out Bubble bubble))
+                    {
+                        _bub[x, y] = bubble.id;
+                        counter++;
+                    } else
+                    {
+                        _bub[x, y] = -1;
+                    }
 
+                    
+                }
+
+            }
+            Debug.Log("Saved: " + counter);
+            return _bub;
+
+
+        }
+        public void GetGrid(int[,] _bub)
+        {
+            for (int y = 0; y < Height; y++)
+            {
+                for (int x = 0; x < Width; x++)
+                {
+                    //Debug.Log("Spawning");
+                    if (_bub[x, y] == -1)
+                    {
+                        continue;
+                    }
+                    SpawnNotRandomBubbles(bubbleManager.GetBubblePrefab(_bub[x, y]), x, y);
+                }
+            }
+        }
+
+        public Bubble TakeBubble(Bubble bubble, int x, int y)
+        {
+            bubble.posX = x;
+            bubble.posY = y;
+            return bubble;
+        }
         /// <summary>
         /// Spawns a new bubble in the given cell
         /// </summary>
@@ -57,8 +121,17 @@
         public void SpawnRandomBubble(int x, int y)
         {
             var bubble = bubbleFactory.Spawn(GetCellPos(x, y));
-
+            bubble.posX = x;
+            bubble.posY = y;
+            //_bub[x, y] = bubble.id;
             bubble.transform.localScale = Vector3.one*CellSize*0.8f;
+        }
+
+        public void SpawnNotRandomBubbles(Bubble bubble, int x, int y)
+        {
+            var _bubble =  bubbleFactory.Spawn(GetCellPos(x, y), bubble);
+            
+            _bubble.transform.localScale = Vector3.one * CellSize * 0.8f;
         }
 
         /// <summary>
@@ -76,7 +149,9 @@
             {
                 if (bubble.IsDestroyed == false)
                 {
+                    //SaveGrid();
                     return true;
+                    
                 }
             }
 
@@ -95,6 +170,7 @@
                 {
                     if(IsSelectable(x, y))
                     {
+                        
                         return true;
                     }
                 }
@@ -113,6 +189,7 @@
         {
             if (TryGetBubble(x, y, out var bubble))
             {
+                
                 return IsSelectable(bubble);
             }
 
@@ -153,6 +230,7 @@
             {
                 if (HasNeighborWithSameColor(bubble, direction))
                 {
+                    
                     return true;
                 }
             }

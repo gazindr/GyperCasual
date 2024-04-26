@@ -822,24 +822,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4964206491830907521, guid: 2c3cf330ae19410b8f39a43cd061eb99, type: 3}
+      propertyPath: topColor.b
+      value: 0.1882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 4964206491830907521, guid: 2c3cf330ae19410b8f39a43cd061eb99, type: 3}
       propertyPath: topColor.g
-      value: 0.6666667
+      value: 0.019607844
       objectReference: {fileID: 0}
     - target: {fileID: 4964206491830907521, guid: 2c3cf330ae19410b8f39a43cd061eb99, type: 3}
       propertyPath: topColor.r
-      value: 0.22745098
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964206491830907521, guid: 2c3cf330ae19410b8f39a43cd061eb99, type: 3}
-      propertyPath: bottomColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964206491830907521, guid: 2c3cf330ae19410b8f39a43cd061eb99, type: 3}
-      propertyPath: bottomColor.g
-      value: 0.69803923
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964206491830907521, guid: 2c3cf330ae19410b8f39a43cd061eb99, type: 3}
-      propertyPath: bottomColor.r
-      value: 0.65882355
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1075,26 +1067,6 @@ PrefabInstance:
     - target: {fileID: 207677355886319402, guid: 00c1d1b6f9d24901a4c44fb4ae90059c, type: 3}
       propertyPath: m_RenderPostProcessing
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280673690544980726, guid: 00c1d1b6f9d24901a4c44fb4ae90059c, type: 3}
-      propertyPath: topColor.g
-      value: 0.69803923
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280673690544980726, guid: 00c1d1b6f9d24901a4c44fb4ae90059c, type: 3}
-      propertyPath: topColor.r
-      value: 0.65882355
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280673690544980726, guid: 00c1d1b6f9d24901a4c44fb4ae90059c, type: 3}
-      propertyPath: bottomColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280673690544980726, guid: 00c1d1b6f9d24901a4c44fb4ae90059c, type: 3}
-      propertyPath: bottomColor.g
-      value: 0.6666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280673690544980726, guid: 00c1d1b6f9d24901a4c44fb4ae90059c, type: 3}
-      propertyPath: bottomColor.r
-      value: 0.22745098
       objectReference: {fileID: 0}
     - target: {fileID: 3275864416733363181, guid: 00c1d1b6f9d24901a4c44fb4ae90059c, type: 3}
       propertyPath: m_IsActive

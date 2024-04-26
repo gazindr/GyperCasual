@@ -14,6 +14,7 @@
         SFXPlayer sfxPlayer = null;
 
         // Reference to the game UI manager
+        [SerializeField]
         GameUIManager gameUIManager;
 
         // Selection holds all selected bubbles
@@ -47,6 +48,7 @@
             while (grid.HasSelectable())
             {
                 // Wait for input
+                Debug.Log("Playing");
                 yield return new WaitForInput();
 
                 // Clear the list of operations
@@ -101,11 +103,11 @@
         public override IEnumerator EndGame()
         {
             gameUIManager.ShowGameOverUI();
-
+            Debug.Log("finish");
             // Wait until the overlay is faded in
             yield return new WaitForSeconds(1f);
 
-            grid.Clear();
+            //grid.Clear();
         }
     }
 }

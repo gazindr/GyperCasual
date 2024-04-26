@@ -18,6 +18,14 @@
         public void Register(Bubble bubble)
         {
             bubble.OnDestroy += OnBubbleDestroy;
+            for (int i = 0; i < prefabs.Count; i++)
+            {
+                if (bubble.Color == prefabs[i].Color)
+                {
+                    bubble.id = i;
+                    break;
+                }
+            }
             Bubbles.Add(bubble);
         }
 
@@ -26,6 +34,11 @@
             bubble.OnDestroy -= OnBubbleDestroy;
             Bubbles.Remove(bubble);
         }
+        public Bubble GetBubblePrefab(int id)
+        {
+            return prefabs[id];
+        }
+
 
         private void OnBubbleDestroy(Bubble bubble)
         {

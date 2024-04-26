@@ -18,17 +18,24 @@
         {
             sfxPlayer.ChangePitch(selection.Selected.Count - 2);
             //sfxPlayer.PlayPopSFX();
+            
             sfxPlayer.PlaySelectSFX();
             Score.Add(new ScoreRevenue(selection).Value);
-            if (selection.Selected.Count > 0)
+            if (selection.Selected.Count > 1)
+            {
                 TextureChanger.Instance.ChangeTexture(selection.Selected[0].spriteRenderer.sprite.texture);
+                MovesManager.Instance.NextMove();
+                AdsManager.Instance.PingPopAd();
+            }
+
+                
             foreach (var bubble in selection.Selected)
             {
                 bubble.Pop();
             }
 
             selection.Clear();
-
+            
             yield return new WaitForSeconds(0.25f);
         }
     }
