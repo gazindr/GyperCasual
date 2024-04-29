@@ -3,7 +3,13 @@ guid: 793ac4e55d12c2d47a374a8d6afb4ae5
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _RU_Font: {fileID: 11400000, guid: 2cdb29d6c3dcda84d9719312f2251f33, type: 2}
+  - _ENG_Font: {fileID: 11400000, guid: 2cdb29d6c3dcda84d9719312f2251f33, type: 2}
+  - _CN_Font: {fileID: 11400000, guid: b00250c543a62bb4c9de0106c00de47a, type: 2}
+  - _RU_Legacy_Font: {fileID: 12800000, guid: 9cefc1b9e334922429dcaaa0bf3d719c, type: 3}
+  - _ENG_Legacy_Font: {fileID: 12800000, guid: 9cefc1b9e334922429dcaaa0bf3d719c, type: 3}
+  - _CN_Legacy_Font: {fileID: 12800000, guid: a10a927f980dce849890fffbfc4eb0ec, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

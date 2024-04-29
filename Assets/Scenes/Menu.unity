@@ -123,6 +123,50 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &3859229
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3859231}
+  - component: {fileID: 3859230}
+  m_Layer: 0
+  m_Name: Leaderboard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &3859230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3859229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269034fb83aa24d9f973ff0490a52cb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &3859231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3859229}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -565.729, y: -1237.8628, z: -27.114561}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1809399832}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &40439166
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,7 +936,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1841461000}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KreizTranslation.LanguageManager, Assembly-CSharp
         m_MethodName: ChangeLanguageToENG
         m_Mode: 1
@@ -1024,7 +1068,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1841461000}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: KreizTranslation.LanguageManager, Assembly-CSharp
         m_MethodName: ChangeLanguageToRU
         m_Mode: 1
@@ -1649,6 +1693,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2047885154}
+  - {fileID: 3859231}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1809399833
@@ -1663,6 +1708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34ae84fb7d1f4bbf9af6c3985683efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moves_value: 0
 --- !u!114 &1809399834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1721,7 +1767,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1841461001}
-  - component: {fileID: 1841461000}
+  - component: {fileID: 1841461002}
   m_Layer: 0
   m_Name: LanguageManager
   m_TagString: Untagged
@@ -1729,18 +1775,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1841461000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1841460999}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 793ac4e55d12c2d47a374a8d6afb4ae5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1841461001
 Transform:
   m_ObjectHideFlags: 0
@@ -1756,6 +1790,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1841461002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841460999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 793ac4e55d12c2d47a374a8d6afb4ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Font: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+  _Legacy_Font: {fileID: 12800000, guid: 164e3a816cf44f059d7b787e7a8a2dff, type: 3}
+  allowRU: 1
+  allowEN: 1
+  allowCN: 0
+  allowTR: 1
+  allowJA: 0
+  allowDE: 1
+  allowES: 1
+  allowID: 1
+  allowFR: 1
+  allowHI: 0
+  allowAR: 0
 --- !u!1001 &2047885153
 PrefabInstance:
   m_ObjectHideFlags: 0

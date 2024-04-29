@@ -13,6 +13,7 @@ public class MovesManager : MonoBehaviour
     public GameObject[] rewardImg;
 
     public TMP_Text depthText;
+    public TMP_Text rewardText;
     public int availableMoves = 0;
 
     public GameObject prevButton;
@@ -30,6 +31,7 @@ public class MovesManager : MonoBehaviour
     void Start()
     {
         currentMove = 0;
+        rewardText.text = "";
         availableMoves = 0;
         UpdateButton();
     }
@@ -67,7 +69,9 @@ public class MovesManager : MonoBehaviour
     public void RewardPlayer()
     {
         //depth += 3;
-        availableMoves += 3;
+
+        availableMoves += PlayerPrefs.GetInt("Moves", 3);
+        rewardText.text = "";
         //PreviousMove();
         UpdateButton();
     }
@@ -83,6 +87,7 @@ public class MovesManager : MonoBehaviour
             {
                 rewardImg[0].SetActive(true);
                 rewardImg[1].SetActive(true);
+                rewardText.text = "+" + PlayerPrefs.GetInt("Moves", 3);
                 depthText.text = "";
             }
             else
@@ -90,6 +95,7 @@ public class MovesManager : MonoBehaviour
                 rewardImg[0].SetActive(false);
                 rewardImg[1].SetActive(false);
                 depthText.text = availableMoves.ToString();
+                rewardText.text = "";
             }
         }
         

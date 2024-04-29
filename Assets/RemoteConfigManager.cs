@@ -9,6 +9,10 @@ using InstantGamesBridge;
 
 public class RemoteConfigManager : MonoBehaviour
 {
+    public static RemoteConfigManager Instance;
+
+    
+
     IEnumerator Start()
     {
         yield return null;
@@ -41,9 +45,27 @@ public class RemoteConfigManager : MonoBehaviour
                         }
                     }
                 }
+                if (remoteConfigItem.name == "AvailableMoves")
+                {
+                    if (Int32.TryParse(remoteConfigItem.value, out int newValue))
+                    {
+                        if (newValue > 0 && newValue < 10)
+                        {
+                            UpdateMoves(newValue);
+                        }
+                    }
+                }
                 Debug.Log($"name: {remoteConfigItem.name}, value: {remoteConfigItem.value}");
             }
         }
+    }
+
+
+    public int moves_value;
+    void UpdateMoves(int i)
+    {
+        moves_value = i;
+        PlayerPrefs.SetInt("Moves", i);
     }
 #endif
 }

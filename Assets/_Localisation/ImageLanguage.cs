@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 namespace KreizTranslation
@@ -9,22 +6,52 @@ namespace KreizTranslation
     {
         [SerializeField] Sprite _RU_Sprite;
         [SerializeField] Sprite _ENG_Sprite;
+        [SerializeField] Sprite _ES_Sprite;
+        [SerializeField] Sprite _DE_Sprite;
+        [SerializeField] Sprite _TR_Sprite;
+        [SerializeField] Sprite _CN_Sprite;
+        [SerializeField] Sprite _JP_Sprite;
+        [SerializeField] Sprite _ID_Sprite;
 
         private void OnEnable()
         {
             RefreshImage();
         }
-        void RefreshImage()
+        public void RefreshImage()
         {
-            string langStr = PlayerPrefs.GetString("Language", "ENG");
+            string langStr = LanguageManager.GetLanguage();
 
             if (langStr == "RU")
             {
                 ChangeTextTo(_RU_Sprite);
             }
-            else
+            else if (langStr == "ENG")
             {
                 ChangeTextTo(_ENG_Sprite);
+            }
+            else if (langStr == "ES")
+            {
+                ChangeTextTo(_ES_Sprite);
+            }
+            else if (langStr == "DE")
+            {
+                ChangeTextTo(_DE_Sprite);
+            }
+            else if (langStr == "TR")
+            {
+                ChangeTextTo(_TR_Sprite);
+            }
+            else if (langStr == "CN")
+            {
+                ChangeTextTo(_CN_Sprite);
+            }
+            else if (langStr == "JP")
+            {
+                ChangeTextTo(_JP_Sprite);
+            }
+            else if (langStr == "ID")
+            {
+                ChangeTextTo(_ID_Sprite);
             }
         }
         void ChangeTextTo(Sprite _sprite)

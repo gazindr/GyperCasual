@@ -16,7 +16,7 @@ namespace KreizTranslation
         {
             DrawDefaultInspector();
             myTarget = (GameTranslator)target;
-            if (GUILayout.Button("Translate All from ENG to RU"))
+            if (GUILayout.Button("Translate All"))
             {
                 if (myTarget.UIHolderObject == null)
                 {
@@ -47,7 +47,7 @@ namespace KreizTranslation
                     Debug.Log("Destroyed:" + destrCounter);
                 }
             }
-            if (myTarget.TMP_Font != null || myTarget.UnityUI_Font != null)
+            if (myTarget.FontAsset != null)
             {
                 if (GUILayout.Button("Change font"))
                 {
@@ -57,7 +57,7 @@ namespace KreizTranslation
                     {
                         if (allObjects[i].TryGetComponent<TextLanguage>(out TextLanguage TL))
                         {
-                            TL.UpdateFont(myTarget.TMP_Font, myTarget.UnityUI_Font);
+                            TL.UpdateFont(myTarget.FontAsset);
                         }
                     }
                     forceAllMode = false;
@@ -91,7 +91,7 @@ namespace KreizTranslation
             }
             GUILayout.Label(myTarget.LabelText);
         }
-        private static List<GameObject> GetAllObjectsInScene()
+        public static List<GameObject> GetAllObjectsInScene()
         {
             List<GameObject> objectsInScene = new List<GameObject>();
 

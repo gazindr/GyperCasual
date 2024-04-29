@@ -4,12 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 namespace KreizTranslation
 {
     public class TextLanguage : MonoBehaviour
     {
-        [SerializeField, TextArea] string _textRU;
-        [SerializeField, TextArea] string _textENG;
+        public TranslatableString _text;
         string curTextLang = "-";
         // Start is called before the first frame update
         void Start()
@@ -18,7 +21,8 @@ namespace KreizTranslation
         }
         private void OnEnable()
         {
-            RefreshText();
+            if (LanguageManager.Instance)
+                RefreshText();
             //LanguageManager.Instance.onChangeLang += RefreshText;
         }
         private void OnDisable()
@@ -27,40 +31,42 @@ namespace KreizTranslation
         }
         public void RefreshText()
         {
-            string langStr = PlayerPrefs.GetString("Language", "ENG");
+            string langStr = LanguageManager.GetLanguage();
             if (langStr == curTextLang) return;
 
-            if (langStr == "RU")
+            if (TryGetComponent<TMP_Text>(out TMP_Text tmpCtext) && LanguageManager.Instance)
             {
-                ChangeTextTo(_textRU);
+                tmpCtext.font = LanguageManager.Instance._Font;
             }
-            else
+            else if (TryGetComponent<Text>(out Text legacyCtext) && LanguageManager.Instance)
             {
-                ChangeTextTo(_textENG);
+                legacyCtext.font = LanguageManager.Instance._Legacy_Font;
             }
+
+            ChangeTextTo(_text.GetString());
         }
+
         void ChangeTextTo(string _text)
         {
             if (TryGetComponent<TMP_Text>(out TMP_Text tmpCtext))
             {
                 tmpCtext.text = _text;
             }
-            if (TryGetComponent<Text>(out Text uiCtext))
+            else if (TryGetComponent<Text>(out Text uiCtext))
             {
                 uiCtext.text = _text;
             }
         }
         public void FirstSetup()
         {
-            string mainText = GetDefaultText();
-            _textENG = mainText;
+            string mainText = _text.GetString();
             if (mainText.Length == 0)
             {
 #if UNITY_EDITOR
                 if (!Application.isPlaying)
                     DestroyImmediate(this);
 #else
-            Destroy(this);
+                Destroy(this);
 #endif
             }
             int digits = 0;
@@ -89,175 +95,168 @@ namespace KreizTranslation
                 if (!Application.isPlaying)
                     DestroyImmediate(this);
 #else
-            Destroy(this);
+                Destroy(this);
 #endif
             }
         }
-        public string GetDefaultText()
+        public void UpdateFont(TMP_FontAsset font)
         {
             if (TryGetComponent<TMP_Text>(out TMP_Text tmpCtext))
             {
-                if (tmpCtext.text.Length == 0)
-                {
-                    return _textENG;
-                }
-                return tmpCtext.text.Trim('\n');
-            }
-            if (TryGetComponent<Text>(out Text uiCtext))
-            {
-                if (uiCtext.text.Length == 0)
-                {
-                    return _textENG;
-                }
-                return uiCtext.text.Trim('\n');
-            }
-
-            return "";
-        }
-        public void SetTralsationENG(string newText)
-        {
-            if (newText.Length == 0) return;
-            translated = true;
-            _textENG = newText;
-        }
-        public void SetTralsationRU(string newText)
-        {
-            if (newText.Length == 0) return;
-            translated = true;
-            _textRU = newText;
-        }
-        [SerializeField] bool translated = false;
-        public bool IsTranslated()
-        {
-            if (_textRU.Length == 0) return false;
-            if (_textENG.Length == 0) return false;
-            int diff = Mathf.Abs(_textRU.Length - _textENG.Length);
-            if ((float)diff / (float)Mathf.Max(_textRU.Length, _textENG.Length) < 0.5f)
-            {
-                //Debug.Log("diff:" + diff + " max:" + Mathf.Max(_textRU.Length, _textENG.Length), gameObject);
-                return true;
-            }
-            return translated;
-        }
-        public void UpdateFont(TMP_FontAsset font, Font fontBasic)
-        {
-            if (TryGetComponent<TMP_Text>(out TMP_Text tmpCtext))
-            {
-                if(font!=null)
-                    tmpCtext.font = font;
-            }
-            else if (TryGetComponent<Text>(out Text uiCtext))
-            {
-                if(fontBasic!=null)
-                    uiCtext.font = fontBasic;
+                tmpCtext.font = font;
             }
         }
         public void DisplayRU()
         {
             if (TryGetComponent<TMP_Text>(out TMP_Text tmpCtext))
             {
-                tmpCtext.text = _textRU;
+                //tmpCtext.text = _textRU;
             }
             else if (TryGetComponent<Text>(out Text uiCtext))
             {
-                uiCtext.text = _textRU;
+                //uiCtext.text = _textRU;
             }
         }
         public void DisplayENG()
         {
             if (TryGetComponent<TMP_Text>(out TMP_Text tmpCtext))
             {
-                tmpCtext.text = _textENG;
+                //tmpCtext.text = _textENG;
             }
             else if (TryGetComponent<Text>(out Text uiCtext))
             {
-                uiCtext.text = _textRU;
+                //uiCtext.text = _textRU;
             }
         }
-        public void StartTranslationProcessToENG()
+        public void DisplayCN()
         {
-            string textToTranslate = _textRU;
-            if (textToTranslate.Length == 0)
-                textToTranslate = GetDefaultText();
-            StartCoroutine(Translation(GetDefaultText(), "en"));
-        }
-        public void StartTranslationProcessToRU()
-        {
-            string textToTranslate = _textENG;
-            if (textToTranslate.Length == 0)
-                textToTranslate = GetDefaultText();
-            StartCoroutine(Translation(textToTranslate, "ru"));
-            
-        }
-        public IEnumerator Translation(string sourceText, string targetLang)
-        {
-            //sourceText = sourceText.Replace('!', '|');
-            string sourceLang = "auto";
-            // Construct the url using our variables and googles api.
-            string url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl="
-                + sourceLang + "&tl=" + targetLang + "&dt=t&q=" + WWW.EscapeURL(sourceText);
-
-            WWW www = new WWW(url);
-            yield return www;
-            if (www.isDone)
+            if (TryGetComponent<TMP_Text>(out TMP_Text tmpCtext))
             {
-                //Debug.Log("Got ans");
-                if (string.IsNullOrEmpty(www.error))
+                //tmpCtext.text = _textCN;
+            }
+            else if (TryGetComponent<Text>(out Text uiCtext))
+            {
+                //uiCtext.text = _textCN;
+            }
+        }
+        public void TryTranslate()
+        {
+
+        }
+        public void TranslateMissing()
+        {
+            _text.TranslateMissing(MainLanguageTranslated);
+        }
+        public void TranslateFromRU()
+        {
+            _text.TranslateFromRU(MainLanguageTranslated);
+        }
+        public void TranslateFromENG()
+        {
+            _text.TranslateFromENG(MainLanguageTranslated);
+        }
+        public void TranslateAll()
+        {
+            _text.TranslateAll(MainLanguageTranslated);
+        }
+        public void TranslateFromCOMPONENT()
+        {
+            string maintext = "";
+            if (TryGetComponent<TMP_Text>(out TMP_Text tmpCtext))
+            {
+                maintext = tmpCtext.text;
+            }
+            else if (TryGetComponent<Text>(out Text uiCtext))
+            {
+                maintext = uiCtext.text;
+            }
+            _text.TranslateFromString(maintext);
+        }
+        public bool HasDifferentComponentText()
+        {
+            if (TryGetComponent<TMP_Text>(out TMP_Text tmpCtext))
+            {
+                if (_text._textENG != tmpCtext.text && _text._textRU != tmpCtext.text)
+                    return true;
+            }
+            else if (TryGetComponent<Text>(out Text uiCtext))
+            {
+                if (_text._textENG != uiCtext.text && _text._textRU != uiCtext.text)
+                    return true;
+            }
+            return false;
+        }
+        public void MainLanguageTranslated()
+        {
+#if UNITY_EDITOR
+            if(!Application.isPlaying)
+            {
+                if (TryGetComponent<TMP_Text>(out TMP_Text tmpCtext))
                 {
-                    string translatedString = www.text;
-
-                    Debug.Log("Text was::::" + sourceText + " \n Transalted::::" + translatedString);
-
-                    translatedString = translatedString.Substring(4);
-
-                    if(targetLang=="ru")
-                        SetTralsationRU(FixString(translatedString));
-                    else if (targetLang == "en")
-                        SetTralsationENG(FixString(translatedString));
+                    tmpCtext.text = _text._textENG;
+                    EditorUtility.SetDirty(tmpCtext);
                 }
-                else
+                else if (TryGetComponent<Text>(out Text uiCtext))
                 {
-                    Debug.Log("ERROR:" + www.error);
-                    Debug.LogError("ERROR:" + www.error);
+                    uiCtext.text = _text._textENG;
+                    EditorUtility.SetDirty(uiCtext);
                 }
             }
-        }
-        string FixString(string strToFix)
-        {
-            if (!strToFix.Contains("\\n\",\""))
-            {
-                return FixStringFinal(strToFix);
-            }
-            else
-            {
-                string newFixedStr = "";
-                string[] translaters = strToFix.Split("\\n\",\"");
-                for (int i = 0; i < translaters.Length; i++)
-                {
-                    string[] data = translaters[i].Split(",[\"");
-
-                    for (int k = 0; k < data.Length; k += 2)
-                    {
-                        newFixedStr = data[k];
-                    }
-                }
-                strToFix = FixStringFinal(newFixedStr);
-            }
-            return strToFix;
-        }
-        string FixStringFinal(string strToFix)
-        {
-            if (!strToFix.Contains("\",\""))
-            {
-                return strToFix;
-            }
-            else
-            {
-                string[] translaters = strToFix.Split("\",\"");
-                strToFix = translaters[0];
-            }
-
-            return strToFix;
+#endif
         }
     }
+#if UNITY_EDITOR
+    [CustomEditor(typeof(TextLanguage))]
+    public class TextLanguageEditor : Editor
+    {
+        TextLanguage myTarget;
+        public override void OnInspectorGUI()
+        {
+            DrawDefaultInspector();
+            myTarget = (TextLanguage)target;
+
+            if (myTarget.HasDifferentComponentText())
+            {
+                if (GUILayout.Button("Translate from COMPONENT"))
+                {
+                    myTarget.TranslateFromCOMPONENT();
+                }
+            }
+
+            if (myTarget._text.HasMissing())
+            {
+                if (GUILayout.Button("Translate Missing"))
+                {
+                    myTarget.TranslateMissing();
+                }
+            }
+
+            if (myTarget._text._textRU != null)
+            {
+                if(myTarget._text._textRU.Length>0)
+                {
+                    if (GUILayout.Button("Translate from RU"))
+                    {
+                        myTarget.TranslateFromRU();
+                    }
+                }
+            }
+            if (myTarget._text._textENG != null)
+            {
+                if (myTarget._text._textENG.Length > 0)
+                {
+                    if (GUILayout.Button("Translate from ENG"))
+                    {
+                        myTarget.TranslateFromENG();
+                    }
+                }
+            }
+
+            /*if (GUILayout.Button("Translate ALL"))
+            {
+                myTarget.TranslateAll();
+            }*/
+        }
+    }
+#endif
 }

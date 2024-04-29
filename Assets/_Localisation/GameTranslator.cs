@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Linq;
+
 namespace KreizTranslation
 {
     public class GameTranslator : MonoBehaviour
@@ -12,8 +12,7 @@ namespace KreizTranslation
         public GameObject UIHolderObject;
         public bool DeleteAllTextLanguages;
         [HideInInspector] public string LabelText = "";
-        public TMP_FontAsset TMP_Font;
-        public Font UnityUI_Font;
+        public TMP_FontAsset FontAsset;
 
         public void StartTranslationProcess(List<GameObject> sceneObjects)
         {
@@ -30,7 +29,7 @@ namespace KreizTranslation
             public TextTranaltion(TextLanguage textLanguage)
             {
                 _textLanguage = textLanguage;
-                this.basicText = _textLanguage.GetDefaultText();
+                this.basicText = _textLanguage._text.GetString();
             }
         }
         [SerializeField]
@@ -60,19 +59,8 @@ namespace KreizTranslation
                     if (TL == null)
                         continue;
 
-                    if (!TL.IsTranslated())
-                    {
-                        string defaultText = TL.GetDefaultText();
-                        if (defaultText.Length >= MaxTextLength || defaultText.Contains("\\n"))
-                        {
-                            _requireManualTranslation.Add(TL);
-                        }
-                        else
-                        {
-                            TextTranaltion translation = new TextTranaltion(TL);
-                            textTranaltions.Add(translation);
-                        }
-                    }
+                    TL.TryTranslate();
+
                 }
                 if (i % 1000 == 0)
                 {
@@ -163,52 +151,15 @@ namespace KreizTranslation
                     Debug.Log("Text was::::" + sourceText + " \n Transalted::::" + translatedString);
 
                     translatedString = translatedString.Substring(4);
-                    /*
-                     Text was::::Back`Tutorial`Social media`see how to
-                    contact me
-                    on website`From basics to tips
 
-                     Transalted::::[[["Назад`Учебник`Социальные сети`узнать, как\n","Back`Tutorial`
-                    Social media`see how to\n",null,null,3,null,null,[[]],[[["c5f104380d2f4c4bf0c58
-                    7f790a21817","en_ru_2021q4.md"]],[null,true]]],["свяжитесь со мной\n","contact me\n",null,null
-                    ,1,null,null,null,[[null,true]]],["на сайте`От основ к советам","on website`From basics to tips",null,
-                    null,3,null,null,[[]],[[["c5f104380d2f4c4bf0c587f790a21817","en_ru_2021q4.md"]]]]],null,"en",null,
-                    null,null,1,[],[["en"],null,[1],["en"]]]
-                    */
-
-                    /*translatedString = translatedString.Substring(4, translatedString.Length);
-                    List<string> translatedStringsList = new List<string>();
-                    for (int i = 0; i< translatedString.Length; i++)
-                    {
-                        string newTranslatedString = "";
-                        if (translatedString[i]!= SPLITCHAR)
-                        {
-                            newTranslatedString += translatedString[i];
-                        }
-                        else
-                        {
-                            newTranslatedString = FixString(newTranslatedString);
-                            translatedStringsList.Add(newTranslatedString);
-                            newTranslatedString = "";
-
-
-                        }
-                    } */
 
                     string[] translaters = translatedString.Split(SPLITCHAR);
                     for (int i = 0; i < textTranaltionsBatch.Count; i++)
                     {
-                        textTranaltionsBatch[i]._textLanguage.SetTralsationRU(FixString(translaters[i]));
+                       // textTranaltionsBatch[i]._textLanguage.SetTralsationRU(FixString(translaters[i]));
                     }
 
 
-                    //string[] translaters = www.text.Split("\",\"");
-
-                    /*string[] translaters = translatedString.Split("`");
-                    for (int i = 0; i < textTranaltionsBatch.Count; i++)
-                    {
-                        textTranaltionsBatch[i]._textLanguage.SetTralsationRU(translaters[i]);
-                    }*/
                 }
                 else
                 {
@@ -235,10 +186,6 @@ namespace KreizTranslation
                     {
                         newFixedStr = data[k];
                     }
-                    /* if(data.Length>1)
-                         newFixedStr += data[1];
-                     else
-                         newFixedStr += data[0];*/
                 }
                 strToFix = FixStringFinal(newFixedStr);
             }
