@@ -33,6 +33,7 @@ public class MovesManager : MonoBehaviour
         currentMove = 0;
         rewardText.text = "";
         availableMoves = 0;
+        depth = PlayerPrefs.GetInt("Moves", 3);
         UpdateButton();
     }
     public void PrevButton()

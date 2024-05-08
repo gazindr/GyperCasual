@@ -28,6 +28,7 @@ public class AdDelayScreen : MonoBehaviour
     {
         IsInCountDown = true;
         _canvas.enabled = true;
+        Time.timeScale = 0f;
         countDownT.text = "3";
         yield return new WaitForSecondsRealtime(0.7f);
         countDownT.text = "2";

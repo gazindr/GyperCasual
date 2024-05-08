@@ -18,7 +18,7 @@
         {
             
             StopAllCoroutines();
-            if (Time.unscaledTime - AdsManager.Instance.lastPingTime > 90)
+            if (Time.unscaledTime - AdsManager.Instance.lastPingTime > AdsManager.Instance.INT_DEALY)
             {
                 AdsManager.Instance.PingPopAd();
                 //SceneManager.LoadScene(name);

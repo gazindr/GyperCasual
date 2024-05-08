@@ -615,10 +615,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3081170224541252603, guid: ab3af6c928bd844f9a63f0dfd8a0e022, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3104906965604542804, guid: ab3af6c928bd844f9a63f0dfd8a0e022, type: 3}
       propertyPath: musicImage
       value: 
@@ -1634,27 +1630,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4964206491830907521, guid: 2c3cf330ae19410b8f39a43cd061eb99, type: 3}
       propertyPath: topColor.b
-      value: 1
+      value: 0.1882353
       objectReference: {fileID: 0}
     - target: {fileID: 4964206491830907521, guid: 2c3cf330ae19410b8f39a43cd061eb99, type: 3}
       propertyPath: topColor.g
-      value: 0.6666667
+      value: 0.019607844
       objectReference: {fileID: 0}
     - target: {fileID: 4964206491830907521, guid: 2c3cf330ae19410b8f39a43cd061eb99, type: 3}
       propertyPath: topColor.r
-      value: 0.22745098
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964206491830907521, guid: 2c3cf330ae19410b8f39a43cd061eb99, type: 3}
-      propertyPath: bottomColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964206491830907521, guid: 2c3cf330ae19410b8f39a43cd061eb99, type: 3}
-      propertyPath: bottomColor.g
-      value: 0.69803923
-      objectReference: {fileID: 0}
-    - target: {fileID: 4964206491830907521, guid: 2c3cf330ae19410b8f39a43cd061eb99, type: 3}
-      propertyPath: bottomColor.r
-      value: 0.65882355
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1724,7 +1708,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34ae84fb7d1f4bbf9af6c3985683efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 4
   moves_value: 0
 --- !u!114 &1809399834
 MonoBehaviour:
@@ -1738,9 +1721,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83fbb3c075920646bd31dca36dab464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  INT_DEALY: 5
   adDelayScreen: {fileID: 2047885158}
-  callGRADelay: 0
+  callGRADelay: -1
   lastPingTime: 0
 --- !u!1 &1822865540
 GameObject:
@@ -1889,50 +1871,6 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    - target: {fileID: 2108914589311780096, guid: 151bfcdf52449a841af153e57a9c46e5, type: 3}
-      propertyPath: _text._textAR
-      value: "\u0642\u0628\u0644 \u0627\u0644\u0625\u0639\u0644\u0627\u0646"
-      objectReference: {fileID: 0}
-    - target: {fileID: 2108914589311780096, guid: 151bfcdf52449a841af153e57a9c46e5, type: 3}
-      propertyPath: _text._textCN
-      value: "\u5E7F\u544A\u524D"
-      objectReference: {fileID: 0}
-    - target: {fileID: 2108914589311780096, guid: 151bfcdf52449a841af153e57a9c46e5, type: 3}
-      propertyPath: _text._textDE
-      value: Vor der Werbung
-      objectReference: {fileID: 0}
-    - target: {fileID: 2108914589311780096, guid: 151bfcdf52449a841af153e57a9c46e5, type: 3}
-      propertyPath: _text._textES
-      value: Antes de la publicidad
-      objectReference: {fileID: 0}
-    - target: {fileID: 2108914589311780096, guid: 151bfcdf52449a841af153e57a9c46e5, type: 3}
-      propertyPath: _text._textFR
-      value: "Avant la publicit\xE9"
-      objectReference: {fileID: 0}
-    - target: {fileID: 2108914589311780096, guid: 151bfcdf52449a841af153e57a9c46e5, type: 3}
-      propertyPath: _text._textHI
-      value: "\u0935\u093F\u091C\u094D\u091E\u093E\u092A\u0928 \u0938\u0947 \u092A\u0939\u0932\u0947"
-      objectReference: {fileID: 0}
-    - target: {fileID: 2108914589311780096, guid: 151bfcdf52449a841af153e57a9c46e5, type: 3}
-      propertyPath: _text._textID
-      value: Sebelum beriklan
-      objectReference: {fileID: 0}
-    - target: {fileID: 2108914589311780096, guid: 151bfcdf52449a841af153e57a9c46e5, type: 3}
-      propertyPath: _text._textJP
-      value: "\u5E83\u544A\u3092\u51FA\u3059\u524D\u306B"
-      objectReference: {fileID: 0}
-    - target: {fileID: 2108914589311780096, guid: 151bfcdf52449a841af153e57a9c46e5, type: 3}
-      propertyPath: _text._textRU
-      value: "\u0414\u043E \u0440\u0435\u043A\u043B\u0430\u043C\u044B"
-      objectReference: {fileID: 0}
-    - target: {fileID: 2108914589311780096, guid: 151bfcdf52449a841af153e57a9c46e5, type: 3}
-      propertyPath: _text._textTR
-      value: "Reklam vermeden \xF6nce"
-      objectReference: {fileID: 0}
-    - target: {fileID: 2108914589311780096, guid: 151bfcdf52449a841af153e57a9c46e5, type: 3}
-      propertyPath: _text._textENG
-      value: Ad in
-      objectReference: {fileID: 0}
     - target: {fileID: 2108914589311780097, guid: 151bfcdf52449a841af153e57a9c46e5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1948,10 +1886,6 @@ PrefabInstance:
     - target: {fileID: 2108914589311780097, guid: 151bfcdf52449a841af153e57a9c46e5, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2108914589311780099, guid: 151bfcdf52449a841af153e57a9c46e5, type: 3}
-      propertyPath: m_text
-      value: "\u0414\u043E \u0440\u0435\u043A\u043B\u0430\u043C\u044B"
       objectReference: {fileID: 0}
     - target: {fileID: 2108914589311780099, guid: 151bfcdf52449a841af153e57a9c46e5, type: 3}
       propertyPath: m_fontSize
@@ -1980,10 +1914,6 @@ PrefabInstance:
     - target: {fileID: 2108914590019688434, guid: 151bfcdf52449a841af153e57a9c46e5, type: 3}
       propertyPath: m_Name
       value: AdDelay - Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 2108914590019688436, guid: 151bfcdf52449a841af153e57a9c46e5, type: 3}
-      propertyPath: m_BlockingObjects
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2108914590019688437, guid: 151bfcdf52449a841af153e57a9c46e5, type: 3}
       propertyPath: m_Pivot.x
@@ -2065,13 +1995,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2108914590019688438, guid: 151bfcdf52449a841af153e57a9c46e5, type: 3}
-      propertyPath: m_SortingOrder
-      value: 100
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6548101755516967999, guid: 151bfcdf52449a841af153e57a9c46e5, type: 3}
-    - {fileID: 2108914588549914674, guid: 151bfcdf52449a841af153e57a9c46e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -2130,30 +2055,6 @@ PrefabInstance:
     - target: {fileID: 207677355886319402, guid: 00c1d1b6f9d24901a4c44fb4ae90059c, type: 3}
       propertyPath: m_RenderPostProcessing
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280673690544980726, guid: 00c1d1b6f9d24901a4c44fb4ae90059c, type: 3}
-      propertyPath: topColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280673690544980726, guid: 00c1d1b6f9d24901a4c44fb4ae90059c, type: 3}
-      propertyPath: topColor.g
-      value: 0.69803923
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280673690544980726, guid: 00c1d1b6f9d24901a4c44fb4ae90059c, type: 3}
-      propertyPath: topColor.r
-      value: 0.65882355
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280673690544980726, guid: 00c1d1b6f9d24901a4c44fb4ae90059c, type: 3}
-      propertyPath: bottomColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280673690544980726, guid: 00c1d1b6f9d24901a4c44fb4ae90059c, type: 3}
-      propertyPath: bottomColor.g
-      value: 0.6666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 2280673690544980726, guid: 00c1d1b6f9d24901a4c44fb4ae90059c, type: 3}
-      propertyPath: bottomColor.r
-      value: 0.22745098
       objectReference: {fileID: 0}
     - target: {fileID: 3275864416733363181, guid: 00c1d1b6f9d24901a4c44fb4ae90059c, type: 3}
       propertyPath: m_IsActive

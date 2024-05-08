@@ -55,12 +55,26 @@ public class RemoteConfigManager : MonoBehaviour
                         }
                     }
                 }
+                if (remoteConfigItem.name == "Velocity")
+                {
+                    if (Int32.TryParse(remoteConfigItem.value, out int newValue))
+                    {
+                        if (newValue > 1 && newValue < 10)
+                        {
+                            UpdateVelocity(newValue);
+                        }
+                    }
+                }
                 Debug.Log($"name: {remoteConfigItem.name}, value: {remoteConfigItem.value}");
             }
         }
     }
-
-
+    public int velocity = 4;
+    void UpdateVelocity(int v)
+    {
+        velocity = v;
+        PlayerPrefs.SetInt("Velocity", velocity);
+    }
     public int moves_value;
     void UpdateMoves(int i)
     {
