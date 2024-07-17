@@ -8,9 +8,9 @@ using UnityEngine;
 public partial class AdsManager : MonoBehaviour
 {
 #if !UNITY_EDITOR
-     int INT_DEALY = 180;
+     public int INT_DEALY = 180;
 #else
-     int INT_DEALY = 5;
+     public int INT_DEALY = 5;
 #endif
     public static AdsManager Instance;
     [SerializeField] AdDelayScreen adDelayScreen;
