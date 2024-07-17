@@ -76,7 +76,6 @@ PlayerSettings:
   androidMinimumWindowWidth: 400
   androidMinimumWindowHeight: 300
   androidFullscreenMode: 1
-  androidAutoRotationBehavior: 1
   defaultIsNativeResolution: 1
   macRetinaSupport: 1
   runInBackground: 0
@@ -516,9 +515,9 @@ PlayerSettings:
   openGLRequireES32: 0
   m_TemplateCustomTags:
     GAME_DISTRIBUTION_GAME_ID: '-'
-    OVERLAY_BACKGROUND_COLOR: '-'
-    PROGRESS_BAR_BACKGROUND_COLOR: '-'
-    PROGRESS_BAR_FILL_COLOR: '#FAFAFA'
+    OVERLAY_BACKGROUND_COLOR: '#242424'
+    PROGRESS_BAR_BACKGROUND_COLOR: '#e71c72'
+    PROGRESS_BAR_FILL_COLOR: '#4b53a6'
   mobileMTRendering:
     Android: 1
     iPhone: 1

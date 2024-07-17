@@ -20,7 +20,10 @@
         {
             IsMoving = false;
         }
-
+        private void Start()
+        {
+            velocity = PlayerPrefs.GetInt("Velocity", 4);
+        }
         public void MoveTo(Vector3 target)
         {
             if (velocity > 0)

@@ -231,6 +231,7 @@ public partial class AdsManager : MonoBehaviour
         Time.timeScale = 0f;
         AudioListener.volume = 0f;
         Debug.Log("PauseForAd ts:" + timeScaleWas);
+        Debug.Log("Current timescale: " + Time.timeScale);
     }
     public static void UnPauseForAd()
     {
@@ -238,7 +239,7 @@ public partial class AdsManager : MonoBehaviour
         isInAd = false;
 
         GlobalVolumeManager.UnMuteSoundAd();
-        Time.timeScale = timeScaleWas;
+        Time.timeScale = 1f;
         Debug.Log("UnPauseForAd ts:" + timeScaleWas);
     }
    
